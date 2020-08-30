@@ -11,8 +11,7 @@
         >
           <b-row>
             <b-col cols=6><h6>{{ item.name }} </h6></b-col>
-            <b-col><img :src="item.image" height="50" /></b-col>
-            <b-col>{{ '$' + item.price }}</b-col>
+            <b-col><img :src="item.image" height="50" class="images" /></b-col>
             <b-col>{{item.amount}}</b-col>
             <b-col><b-button variant='danger' @click="removeItem(index)">移除</b-button></b-col>
           </b-row>
@@ -29,9 +28,6 @@
         class="card"
       >
       <img :src='item.image' alt="image" height='200em' />
-        <b-card-text>
-          {{"$" + item.price }}
-        </b-card-text>
         <template v-slot:footer>
           <b-form-input 
             style='max-width: 5em; margin-right:.5em; display:inline-block;'
@@ -105,5 +101,8 @@ export default {
   width: 33%;
   min-width: 20em;
   display: inline-block;;
+}
+img {
+  max-width: 100%;
 }
 </style>

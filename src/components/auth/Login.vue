@@ -14,9 +14,6 @@
             </div>
 
             <button type="submit" class="btn btn-dark btn-lg btn-block">登入</button>
-            <button type="submit" class="btn btn-dark btn-lg btn-block">
-              <router-link to='/register'> 還沒註冊過嗎?</router-link>
-            </button>
 
             <p class="forgot-password text-right mt-2 mb-4">
                 <router-link to="/forgot-password">忘記密碼?</router-link>
@@ -44,7 +41,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
-            this.$router.push('/home')
+            this.$router.push('/admin')
         })
         .catch((error) => {
           alert(error.message);

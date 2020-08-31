@@ -76,6 +76,7 @@
           </b-card>
         </div>
         <p>實際價格以現場評估為主</p>
+        <p>如果您沒有電子郵件信箱，也可以打電話預約喔~</p>
       </v-col>
 
       <v-col>
@@ -143,6 +144,14 @@
                   v-model="email"
                   type="email"
                   label="電子郵件信箱(必須)"
+                  required
+                  filled
+                  dense
+                ></v-text-field>
+                <v-text-field
+                  v-model="refferer"
+                  type="number"
+                  label="推薦人電話"
                   filled
                   dense
                 ></v-text-field>
@@ -226,7 +235,7 @@
               </v-toolbar>
               <v-card-text>
                 <span v-html="selectedEvent.email"></span>
-				<br>
+                <br />
                 <span v-html="selectedEvent.selected"></span>
               </v-card-text>
               <v-card-actions>
@@ -262,6 +271,7 @@ export default {
     time: null,
     end: null,
     start: null,
+    refferer: null,
     selected: "保養車輛",
     options: [
       { item: "保養車輛", name: "保養車輛" },
@@ -321,6 +331,7 @@ export default {
           id: appData.id,
           start: appData.start,
           email: appData.email,
+          refferer: appData.refferer,
           name: appData.name,
           selected: appData.selected,
           color: appData.color,
@@ -362,6 +373,7 @@ export default {
         await db.collection("rsv-cal").add({
           name: this.name,
           email: this.email,
+          refferer: this.refferer,
           selected: this.selected,
           start: `${this.start} ${this.time}`,
           color: this.color,
@@ -411,12 +423,13 @@ export default {
             }
           );
       }
-      (this.name = ""),
+        (this.name = ""),
+        (this.refferer = ''),
         (this.selected = "保養車輛"),
         (this.email = ""),
         (this.start = ""),
         (this.time = ""),
-        (this.color = "");
+        (this.color = "#1976D2");
     },
     editEvent(ev) {
       this.currentlyEditing = ev.id;

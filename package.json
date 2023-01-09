@@ -16,7 +16,7 @@
     "firebase": "^7.18.0",
     "jqwidgets-scripts": "^10.0.2",
     "kalendar-vue": "^2.1.1",
-    "luxon": "^1.24.1",
+    "luxon": "^2.5.2",
     "vue": "^2.6.11",
     "vue-router": "^3.0.6",
     "vue-spinner": "^1.0.3",
